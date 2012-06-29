@@ -16,7 +16,7 @@ def p_reqstr(p):
 
 def p_headers(p):
    '''headers : aheader headers
-               | empty'''
+              | empty'''
    pass
 
 def p_aheader(p):

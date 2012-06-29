@@ -5,7 +5,7 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'b\x9cx\xb9\xe0\x01\xecN\xe3\xb2\x16\xf9~\xf2\xbe\x9f'
+_lr_signature = '\x92\xb3\x935u\xec_\x8at\xa9N\xd1i\xb5g\x89'
     
 _lr_action_items = {'PROTO':([8,],[11,]),'URL':([3,],[8,]),'HVAL':([4,],[9,]),'HEADER':([1,6,9,11,],[4,4,-5,-2,]),'METHOD':([0,],[3,]),'$end':([1,2,5,6,7,9,10,11,],[-6,0,-1,-6,-4,-5,-3,-2,]),}
 
@@ -26,10 +26,10 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> request","S'",1,None,None,None),
-  ('request -> reqstr headers','request',2,'p_req','/Users/hansens/shttp/shttp/parse/parserdef.py',5),
-  ('reqstr -> METHOD URL PROTO','reqstr',3,'p_reqstr','/Users/hansens/shttp/shttp/parse/parserdef.py',14),
-  ('headers -> aheader headers','headers',2,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',18),
-  ('headers -> empty','headers',1,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',19),
-  ('aheader -> HEADER HVAL','aheader',2,'p_aheader','/Users/hansens/shttp/shttp/parse/parserdef.py',23),
-  ('empty -> <empty>','empty',0,'p_empty','/Users/hansens/shttp/shttp/parse/parserdef.py',27),
+  ('request -> reqstr headers','request',2,'p_req','/home/hansens/shttp/shttp/parse/parserdef.py',5),
+  ('reqstr -> METHOD URL PROTO','reqstr',3,'p_reqstr','/home/hansens/shttp/shttp/parse/parserdef.py',14),
+  ('headers -> aheader headers','headers',2,'p_headers','/home/hansens/shttp/shttp/parse/parserdef.py',18),
+  ('headers -> empty','headers',1,'p_headers','/home/hansens/shttp/shttp/parse/parserdef.py',19),
+  ('aheader -> HEADER HVAL','aheader',2,'p_aheader','/home/hansens/shttp/shttp/parse/parserdef.py',23),
+  ('empty -> <empty>','empty',0,'p_empty','/home/hansens/shttp/shttp/parse/parserdef.py',27),
 ]
