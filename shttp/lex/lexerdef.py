@@ -20,7 +20,7 @@ states = (
 #unreserved = r'[\w\d._~-]'
 
 def t_INITIAL_METHOD(t):
-   r'(GET|POST|HEAD|PUT|DELETE)'
+   r'(HEAD|GET|OPTIONS)'
    t.lexer.begin('lexurl')
    return t
 
