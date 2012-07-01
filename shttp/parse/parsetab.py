@@ -5,9 +5,9 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = '\x92\xb3\x935u\xec_\x8at\xa9N\xd1i\xb5g\x89'
+_lr_signature = '\x11[h\xc7!G\xcf\x14r\x11\x9a\x1cc\xd0\xafC'
     
-_lr_action_items = {'PROTO':([8,],[11,]),'URL':([3,],[8,]),'HVAL':([4,],[9,]),'HEADER':([1,6,9,11,],[4,4,-5,-2,]),'METHOD':([0,],[3,]),'$end':([1,2,5,6,7,9,10,11,],[-6,0,-1,-6,-4,-5,-3,-2,]),}
+_lr_action_items = {'PROTO':([5,],[10,]),'URL':([3,],[5,]),'HVAL':([6,],[11,]),'ENDL':([1,4,7,8,9,10,11,13,14,],[4,-6,12,-6,-4,-2,14,-3,-5,]),'HEADER':([4,8,14,],[6,6,-5,]),'METHOD':([0,],[3,]),'$end':([2,12,],[0,-1,]),}
 
 _lr_action = { }
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'headers':([1,6,],[5,10,]),'reqstr':([0,],[1,]),'request':([0,],[2,]),'empty':([1,6,],[7,7,]),'aheader':([1,6,],[6,6,]),}
+_lr_goto_items = {'headers':([4,8,],[7,13,]),'reqstr':([0,],[1,]),'request':([0,],[2,]),'empty':([4,8,],[9,9,]),'aheader':([4,8,],[8,8,]),}
 
 _lr_goto = { }
 for _k, _v in _lr_goto_items.items():
@@ -26,10 +26,10 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> request","S'",1,None,None,None),
-  ('request -> reqstr headers','request',2,'p_req','/home/hansens/shttp/shttp/parse/parserdef.py',5),
-  ('reqstr -> METHOD URL PROTO','reqstr',3,'p_reqstr','/home/hansens/shttp/shttp/parse/parserdef.py',14),
-  ('headers -> aheader headers','headers',2,'p_headers','/home/hansens/shttp/shttp/parse/parserdef.py',18),
-  ('headers -> empty','headers',1,'p_headers','/home/hansens/shttp/shttp/parse/parserdef.py',19),
-  ('aheader -> HEADER HVAL','aheader',2,'p_aheader','/home/hansens/shttp/shttp/parse/parserdef.py',23),
-  ('empty -> <empty>','empty',0,'p_empty','/home/hansens/shttp/shttp/parse/parserdef.py',27),
+  ('request -> reqstr ENDL headers ENDL','request',4,'p_req','/Users/hansens/shttp/shttp/parse/parserdef.py',5),
+  ('reqstr -> METHOD URL PROTO','reqstr',3,'p_reqstr','/Users/hansens/shttp/shttp/parse/parserdef.py',14),
+  ('headers -> aheader headers','headers',2,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',18),
+  ('headers -> empty','headers',1,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',19),
+  ('aheader -> HEADER HVAL ENDL','aheader',3,'p_aheader','/Users/hansens/shttp/shttp/parse/parserdef.py',23),
+  ('empty -> <empty>','empty',0,'p_empty','/Users/hansens/shttp/shttp/parse/parserdef.py',27),
 ]

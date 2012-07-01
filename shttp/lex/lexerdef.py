@@ -4,6 +4,7 @@ tokens = (
    'PROTO',
    'HEADER',
    'HVAL',
+   'ENDL',
 )
 
 states = (
@@ -45,9 +46,10 @@ def t_lexhval_HVAL(t):
    t.lexer.begin('lexheader')
    return t
 
-def t_ANY_newline(t):
+def t_ANY_ENDL(t):
    r'\r\n'
-   t.lexer.lineno += len(t.value)
+   #t.lexer.lineno += len(t.value)
+   return t
 
 t_ANY_ignore = ' \t'
 

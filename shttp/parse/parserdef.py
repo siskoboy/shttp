@@ -2,7 +2,7 @@ from ..lex.lexerdef import tokens
 
 _headers = {}
 def p_req(p):
-   'request : reqstr headers'
+   'request : reqstr ENDL headers ENDL'
    p[0] = {
       'METHOD':  p[1][0],
       'URL':     p[1][1],
@@ -20,7 +20,7 @@ def p_headers(p):
    pass
 
 def p_aheader(p):
-   'aheader : HEADER HVAL'
+   'aheader : HEADER HVAL ENDL'
    _headers[p[1].rstrip(':')] = p[2]
 
 def p_empty(p):
