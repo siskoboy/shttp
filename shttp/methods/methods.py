@@ -66,6 +66,8 @@ class HTTPResponse:
          self._setup_4XX(405)
 
       # check for file existence
+      #  stat() asserts OSError when file does not exist
+      #  open() asserts IOError on E_NOPERM
       self._cname = self._canonicalize_name(req.url)
       try:
          st = stat('%s/%s' % (docroot, self._cname))
@@ -87,6 +89,7 @@ class HTTPResponse:
       self._headers['Content-Type'] = 'text/html'
       self._headers['Content-Length'] = len(self._content)
 
+
    # HTTP 2XX handler
    def _setup_2XX(self, code):
       self._status_line = 'HTTP/1.1 %d %s' % (code, self._code_desc[code])
@@ -94,7 +97,7 @@ class HTTPResponse:
       self._headers['Content-Length'] = len(self._content)
 
 
-   # craft HTTP response
+   # craft a formatted HTTP response
    def format_resp(self):
       s = self._status_line + '\r\n'
 
@@ -102,6 +105,7 @@ class HTTPResponse:
          s += '%s: %s\r\n' % (n, self._headers[n])
       s += '\r\n'
 
+      # in the case of HEAD, we must not transmit content
       if self._content and self._include_content:
          s += self._content
 
@@ -111,6 +115,8 @@ class HTTPResponse:
    # generate a canonicalized name from the requested resource
    def _canonicalize_name(self, url):
       cname = ['',]
+
+      # strip off the leading <scheme://add.re.ss[:port]>
       schemeloc = url.rfind('://')
       if schemeloc != -1:
          # schmemloc+3 would be the index of the scheme://

@@ -9,7 +9,22 @@ A few hours in we have a very basic static only http server.
 
 The server utilizes a formal LALR front end parser for requests.  This
 greatly simplifies the request processing and allows us to incrementally add
-supported protocol features.
+supported protocol features (provided I can keep the grammar un-ambiguous :p).
+
+The servers main path of execution just creates a connection and then enters a
+loop calling accept(); fork().  In the child, a request is read, parsed,
+dispatched, and the client socket is then closed.  In the parent, the client
+socket is immediately shut down (processed by the child process).  This
+processing model ("looped" forking loop) was chosen based on its simplicity.
 
 There is a _whole_ lot more to do before we have a simple RFC compliant server.
 See the TODO file for a list of things that I might tool around with.
+
+This has been pretty fun to work on :D
+
+$ nc 127.0.0.1 8081 <<< $'HEAD /index.html HTTP/1.1\r\nHost: foo.com\r\n\r\n'
+HTTP/1.1 200 OK
+Date: 02 Jul 2012 11:49:58
+Content-Length: 49
+Content-Type: text/html
+Server: shitty-p 1.0

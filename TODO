@@ -16,5 +16,6 @@ Shopping list o-stuff (in no particular order...)
 * [7] Right now the server opens a client socket, processes the request, and
   then closes the socket.  This is obviously not ideal.  Implement a proper
   persistent http client connection - integrate with headers.
+* [7] Handle requests for directories (right now they just 403).
 
 
