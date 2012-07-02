@@ -1,0 +1,15 @@
+Shopping list o-stuff (in no particular order...)
+
+* Implement an argparser.
+* I should make more appropriate use of exceptions.  Develop a set of HTTP
+  exceptions module (shttp.exceptions).  That might make the flow in the
+  HTTPResponse object a little more smooth.
+* Implement appropriate SIGCHLD, SIGINT, SIGHUP signal handlers.
+* Implement a parsed config file (start with simple args).
+* Right now the docroot is just a static configuration.  I should probably
+  implement a virtual host mechanism.
+* Switch from basic sockets to libcrypto BIO and whatnot (for ssl support).
+* The HTTPRequest and HTTPResponse objects are pretty easy to work with, but I
+  might have a more general server object.
+* Import logging!
+

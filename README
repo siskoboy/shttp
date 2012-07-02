@@ -1,6 +1,15 @@
 shttp: shitty-p.  Sam Hansens http server.
 
-This is a toy project.  This is currently in pre-release form.  A note will be
-made here when the http server is at a state capable of serving static file.
+Requires PLY <http://www.dabeaz.com/ply/>
 
-Sam Hansen
+This is a toy project.  I made some offhand comment that I could probably cook
+up a static http server in a few hours or so.
+
+A few hours in we have a very basic static only http server.
+
+The server utilizes a formal LALR front end parser for requests.  This
+greatly simplifies the request processing and allows us to incrementally add
+supported protocol features.
+
+There is a _whole_ lot more to do before we have a simple RFC compliant server.
+See the TODO file for a list of things that I might tool around with.
