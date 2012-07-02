@@ -3,13 +3,7 @@ from ..methods import HTTPRequest as req
 
 _headers = {}
 def p_req(p):
-   'request : reqstr ENDL headers ENDL'
-   #p[0] = {
-   #   'METHOD':  p[1][0],
-   #   'URL':     p[1][1],
-   #   'PROTO':   p[1][2],
-   #   'HEADERS': _headers,
-   #}
+   'request : reqstr CRLF headers CRLF'
    p[0] = req(p[1]['METHOD'], p[1]['URL'], p[1]['PROTO'], _headers)
 
 def p_reqstr(p):
@@ -26,7 +20,7 @@ def p_headers(p):
    pass
 
 def p_aheader(p):
-   'aheader : HEADER HVAL ENDL'
+   'aheader : HEADER HVAL CRLF'
    _headers[p[1].rstrip(':')] = p[2]
 
 def p_empty(p):

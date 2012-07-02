@@ -4,7 +4,7 @@ tokens = (
    'PROTO',
    'HEADER',
    'HVAL',
-   'ENDL',
+   'CRLF',
 )
 
 states = (
@@ -48,7 +48,7 @@ def t_lexhval_HVAL(t):
    t.lexer.begin('lexheader')
    return t
 
-def t_ANY_ENDL(t):
+def t_ANY_CRLF(t):
    r'\r\n'
    #t.lexer.lineno += len(t.value)
    return t

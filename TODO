@@ -1,15 +1,20 @@
 Shopping list o-stuff (in no particular order...)
+[n] = priority [n+1] has greater priority than [n]
 
-* Implement an argparser.
-* I should make more appropriate use of exceptions.  Develop a set of HTTP
+* [7] Implement an argparser.
+* [5] I should make more appropriate use of exceptions.  Develop a set of HTTP
   exceptions module (shttp.exceptions).  That might make the flow in the
   HTTPResponse object a little more smooth.
-* Implement appropriate SIGCHLD, SIGINT, SIGHUP signal handlers.
-* Implement a parsed config file (start with simple args).
-* Right now the docroot is just a static configuration.  I should probably
+* [11] Implement appropriate SIGCHLD, SIGINT, SIGHUP signal handlers.
+* [3] Implement a parsed config file (start with simple args).
+* [3] Right now the docroot is just a static configuration.  I should probably
   implement a virtual host mechanism.
-* Switch from basic sockets to libcrypto BIO and whatnot (for ssl support).
-* The HTTPRequest and HTTPResponse objects are pretty easy to work with, but I
-  might have a more general server object.
-* Import logging!
+* [3] Switch from basic sockets to libcrypto BIO and whatnot (for ssl support).
+* [3] The HTTPRequest and HTTPResponse objects are pretty easy to work with, but
+  I might have a more general server object. (investigate)
+* [7] Import logging!
+* [7] Right now the server opens a client socket, processes the request, and
+  then closes the socket.  This is obviously not ideal.  Implement a proper
+  persistent http client connection - integrate with headers.
+
 

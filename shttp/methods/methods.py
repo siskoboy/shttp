@@ -35,11 +35,11 @@ class HTTPResponse:
    }
 
    _mime_types = {
-      'css': 'text/css',
-      'gif': 'image/gif',
+      'css':  'text/css',
+      'gif':  'image/gif',
       'html': 'text/html',
-      'jpg': 'image/jpeg',
-      'png': 'image/png',
+      'jpg':  'image/jpeg',
+      'png':  'image/png',
    }
 
 
@@ -102,6 +102,7 @@ class HTTPResponse:
       return s
 
 
+   # generate a canonicalized name from the requested resource
    def _canonicalize_name(self, url):
       cname = ['',]
       schemeloc = url.rfind('://')

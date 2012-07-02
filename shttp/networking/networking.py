@@ -25,15 +25,17 @@ class connection:
       self._serv_socket.close()
 
    # utility functions to get information about the client
-   def get_cli_addr(self):
-      return self._cli_addr[0]
-   def get_cli_port(self):
-      return self._cli_addr[1]
+   #def get_cli_addr(self):
+   #   return self._cli_addr[0]
+   #def get_cli_port(self):
+   #   return self._cli_addr[1]
 
+   # grab a request
    def recv_request(self):
       s = self._cli_socket.recv(self._buffsz)
       return s
 
+   # send the response
    def send_response(self, resp):
       return self._cli_socket.send(resp.format_resp())
 
