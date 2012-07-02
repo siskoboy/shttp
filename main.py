@@ -4,13 +4,14 @@ from shttp.networking import connection
 from shttp.parse import parser as reqparser
 
 from os import fork
-from signal import signal, SIGCHLD, SIG_IGN, SIG_INT, SIG_HUP
+from signal import signal, SIG_IGN, SIGCHLD, SIGINT, SIGHUP
 from sys import exit
 
 # TODO proper argparser
 # TODO sighandlers CHLD, INT, HUP
 
 socketio = connection('127.0.0.1', 8081)
+docroot = '/var/www/html'
 
 while True:
    socketio.accept()
@@ -22,7 +23,7 @@ while True:
       req = reqparser.parse(data)
 
       # build and transmit response
-      resp = response(req)
+      resp = response(req,docroot)
       socketio.send_response(resp)
 
       # close client connection

@@ -21,12 +21,14 @@ states = (
 #unreserved = r'[\w\d._~-]'
 
 def t_INITIAL_METHOD(t):
-   r'(HEAD|GET|OPTIONS)'
+   r'\w+'
    t.lexer.begin('lexurl')
    return t
 
+# at this time we aren't supporting queries or fragments
+# we must support both absolute and relative URI's
 def t_lexurl_URL(t):
-   r'[:/?#\[\]@!$&\'()*+,;=\w\d._~-]+'
+   r'[\w\d:/._~-]+'
    t.lexer.begin('lexproto')
    return t
 

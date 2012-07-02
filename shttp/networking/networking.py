@@ -1,4 +1,5 @@
 import socket
+from ..methods import HTTPResponse as response
 
 class connection:
    # _serv_socket
@@ -32,3 +33,10 @@ class connection:
    def recv_request(self):
       s = self._cli_socket.recv(self._buffsz)
       return s
+
+   def send_response(self, resp):
+      return self._cli_socket.send(resp.format_resp())
+
+
+
+
