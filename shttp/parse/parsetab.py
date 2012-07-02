@@ -26,10 +26,10 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> request","S'",1,None,None,None),
-  ('request -> reqstr ENDL headers ENDL','request',4,'p_req','/Users/hansens/shttp/shttp/parse/parserdef.py',5),
-  ('reqstr -> METHOD URL PROTO','reqstr',3,'p_reqstr','/Users/hansens/shttp/shttp/parse/parserdef.py',14),
-  ('headers -> aheader headers','headers',2,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',18),
-  ('headers -> empty','headers',1,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',19),
-  ('aheader -> HEADER HVAL ENDL','aheader',3,'p_aheader','/Users/hansens/shttp/shttp/parse/parserdef.py',23),
-  ('empty -> <empty>','empty',0,'p_empty','/Users/hansens/shttp/shttp/parse/parserdef.py',27),
+  ('request -> reqstr ENDL headers ENDL','request',4,'p_req','/Users/hansens/shttp/shttp/parse/parserdef.py',6),
+  ('reqstr -> METHOD URL PROTO','reqstr',3,'p_reqstr','/Users/hansens/shttp/shttp/parse/parserdef.py',16),
+  ('headers -> aheader headers','headers',2,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',24),
+  ('headers -> empty','headers',1,'p_headers','/Users/hansens/shttp/shttp/parse/parserdef.py',25),
+  ('aheader -> HEADER HVAL ENDL','aheader',3,'p_aheader','/Users/hansens/shttp/shttp/parse/parserdef.py',29),
+  ('empty -> <empty>','empty',0,'p_empty','/Users/hansens/shttp/shttp/parse/parserdef.py',33),
 ]

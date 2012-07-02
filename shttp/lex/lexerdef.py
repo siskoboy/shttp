@@ -54,7 +54,6 @@ def t_ANY_ENDL(t):
 t_ANY_ignore = ' \t'
 
 def t_ANY_error(t):
-   print "Illegal Character '%s'" % t.value[0]
    t.lexer.skip(1)
 
 
