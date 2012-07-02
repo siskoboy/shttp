@@ -51,6 +51,12 @@ class HTTPResponse:
       }
 
       print "%s %s" % (req.method, req.url)
+
+      if req.method == 'HEAD':
+         self._include_content = False
+      else:
+         self._include_content = True
+
       # known failure cases
       if not req:
          self._setup_4XX(400)
@@ -96,7 +102,7 @@ class HTTPResponse:
          s += '%s: %s\r\n' % (n, self._headers[n])
       s += '\r\n'
 
-      if self._content:
+      if self._content and self._include_content:
          s += self._content
 
       return s
