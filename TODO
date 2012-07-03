@@ -1,7 +1,6 @@
 Shopping list o-stuff (in no particular order...)
 [n] = priority [n+1] has greater priority than [n]
 
-* [7] Implement an argparser.
 * [5] I should make more appropriate use of exceptions.  Develop a set of HTTP
   exceptions module (shttp.exceptions).  That might make the flow in the
   HTTPResponse object a little more smooth.
