@@ -3,7 +3,7 @@ shttp: shitty-p.  Sam Hansens http server.
 Requires PLY <http://www.dabeaz.com/ply/>
 
 This is a toy project.  I made some offhand comment that I could probably cook
-up a static http server in a few hours or so.
+up a static http server in a few hours or so... so I did.
 
 A few hours in we have a very basic static only http server.
 
