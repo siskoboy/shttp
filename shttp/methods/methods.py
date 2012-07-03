@@ -171,8 +171,12 @@ class HTTPResponse:
 
 
    def _mimetype(self, cname):
+      doctype = 'text/html'
       idx = cname.find('.')
-      if idx == -1:
-         return 'text/html'
-      else:
-         return self._mime_types[cname[idx+1:]]
+      if idx != -1:
+         extension = cname[idx+1:].lower()
+
+         if self._mime_types.has_key(extension):
+            doctype = self._mime_types[extension]
+
+      return doctype
