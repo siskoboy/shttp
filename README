@@ -17,6 +17,11 @@ dispatched, and the client socket is then closed.  In the parent, the client
 socket is immediately shut down (processed by the child process).  This
 processing model ("looped" forking loop) was chosen based on its simplicity.
 
+Resource urls are run through a canonicalization function which uses a simple
+stack to translate the url into a minimal length string (ie. it removes all the
+'.' and '..'s).  This is done primarily to keep the webserver from wandering
+outside the specified docroot.
+
 There is a _whole_ lot more to do before we have a simple RFC compliant server.
 See the TODO file for a list of things that I might tool around with.
 
