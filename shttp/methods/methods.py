@@ -32,6 +32,7 @@ class HTTPResponse:
       403: 'Forbidden',
       404: 'Not Found',
       405: 'Method Not Allowed',
+      501: 'Not Implemented',
    }
 
    _mime_types = {
@@ -50,6 +51,7 @@ class HTTPResponse:
          'Date':     datetime.now().strftime('%d %b %Y %H:%M:%S'),
       }
 
+      # TODO not the best place for logging!!
       print "%s %s" % (req.method, req.url)
 
       if req.method == 'HEAD':
@@ -62,8 +64,8 @@ class HTTPResponse:
          self._setup_4XX(400)
       elif req.proto == 'HTTP/1.1' and not req.headers.has_key('Host'):
          self._setup_4XX(400)
-      elif req.method not in ('HEAD', 'GET', 'OPTIONS'):
-         self._setup_4XX(405)
+      elif req.method not in ('GET', 'HEAD'):
+         self._setup_5XX(501)
 
       # check for file existence
       #  stat() asserts OSError when file does not exist
@@ -82,6 +84,13 @@ class HTTPResponse:
          self._setup_4XX(403)
 
 
+   # HTTP 2XX handler
+   def _setup_2XX(self, code):
+      self._status_line = 'HTTP/1.1 %d %s' % (code, self._code_desc[code])
+      self._headers['Content-Type'] = self._mimetype(self._cname)
+      self._headers['Content-Length'] = len(self._content)
+
+
    # HTTP 4XX handler
    def _setup_4XX(self, code):
       self._status_line = 'HTTP/1.1 %d %s' % (code, self._code_desc[code])
@@ -90,10 +99,11 @@ class HTTPResponse:
       self._headers['Content-Length'] = len(self._content)
 
 
-   # HTTP 2XX handler
-   def _setup_2XX(self, code):
+   # HTTP 5XX handler
+   def _setup_5XX(self,code):
       self._status_line = 'HTTP/1.1 %d %s' % (code, self._code_desc[code])
-      self._headers['Content-Type'] = self._mimetype(self._cname)
+      self._content = '<html><body><h1>%d %s</body></html>' % (code, self._code_desc[code])
+      self._headers['Content-Type'] = 'text/html'
       self._headers['Content-Length'] = len(self._content)
 
 
