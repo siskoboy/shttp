@@ -25,8 +25,14 @@ from os import fork
 from signal import signal, SIG_IGN, SIGCHLD, SIGINT, SIGHUP
 from sys import exit
 
-# TODO proper argparser
 # TODO sighandlers CHLD, INT, HUP
+
+def sigint_h(signo, frame):
+   print 'Caught sigint, shutting down!'
+   socketio.shutdown()
+   exit()
+
+signal(SIGINT, sigint_h)
 
 argparser = ArgumentParser()
 argparser.add_argument('-r', '--docroot', default='/var/www/html',
@@ -49,13 +55,14 @@ while True:
       data = socketio.recv_request()
       req = reqparser.parse(data)
 
-      # build and transmit response
-      resp = response(req,args.docroot)
-      socketio.send_response(resp)
+      if req.method and req.url:
+         # build and transmit response
+         resp = response(req,args.docroot)
+         socketio.send_response(resp)
 
-      # close client connection
-      socketio.close()
-      exit()
+         # close client connection
+         socketio.close()
+         exit()
    else:
       socketio.close()
 
